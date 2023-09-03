@@ -8,7 +8,7 @@ const IS_PRODUCTION = env === 'production';
 const PRODUCTION_OPTIONS = {
   output: 'export',
   // distDir: 'docs',
-  // assetPrefix: "/jiwoo-choi/band-api-example/docs",
+  assetPrefix: "/band-api-example",
 }
 module.exports = withNextra({
   images: {
