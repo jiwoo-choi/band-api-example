@@ -1,0 +1,30 @@
+{
+  "index": "시작하기",
+  "get_started": "준비하기",
+  "-- features": {
+    "type": "separator",
+    "title": "예제"
+  },
+  "overview": "Overview",
+  "examples": "Examples",
+  "tips": "오류대응",
+  "-- links": {
+    "type": "separator",
+    "title": "🔗 참고 링크"
+  },
+  "band": {
+    "title": "⇲ band.us",
+    "href": "https://band.us/",
+    "newWindow": true
+  },
+  "band_developer": {
+    "title": "⇲ 밴드 개발자 센터",
+    "href": "https://developers.band.us/",
+    "newWindow": true
+  },
+  "band_api_guide": {
+    "title": "⇲ 밴드 OPEN API",
+    "href": "https://developers.band.us/develop/guide/api",
+    "newWindow": true
+  }
+}

@@ -1,0 +1,17 @@
+import { RemoteContent } from "nextra/data";
+import { buildDynamicMDX, buildDynamicMeta } from 'nextra/remote'
+import { Tabs, Cards, Card} from 'nextra/components'
+import { fullCodePartCodeGen } from '../../code';
+
+export const getStaticProps = async (context) => {
+   return { 
+    props: {
+        ...(await buildDynamicMeta()),
+        ...(await buildDynamicMDX(
+          await fullCodePartCodeGen('get_bands', '밴드 목록 조회')
+         , {defaultShowCopyCode: true, codeHighlight: true}))
+    }
+  }
+};
+
+<RemoteContent components={{Tabs, TabItem: Tabs.Tab, Cards, Card }}/>

@@ -1,0 +1,14 @@
+{
+  "get_user_information": "사용자 정보 조회 예시",
+  "get_bands": "밴드 목록 조회 예시",
+  "get_posts": "글 목록 조회 예시",
+  "get_post": "글 상세 조회 예시",
+  "write_post": "글 쓰기 예시",
+  "remove_post": "글 삭제 예시",
+  "get_comments": "댓글 목록 조회 예시",
+  "write_comment": "댓글 작성 예시",
+  "remove_comment": "댓글 삭제 예시",
+  "get_post_permission": "쓰기/삭제 권한 조회 예시",
+  "get_albums": "앨범 목록 조회 예시",
+  "get_photos": "사진 목록 조회 예시"
+}
