@@ -1,0 +1,55 @@
+# 환경 준비하기
+
+### A. 인증 토큰 발급 받기.
+[발급 가이드]('/get_started/how_to_get_access_token')
+
+### B. 언어별 가이드
+
+#### (1) Perl
+##### a. Dependencies
+- Https.pm
+- Json.pm
+- Prop.pm
+
+##### b. 환경 검사 코드
+
+1. info.txt 생성.
+```text filename="info.txt" copy
+# info.txt.default
+# 환경정보를 본인의 것으로 업데이트 한 후 파일명을 info.txt 로 변경하세요.
+
+access_token {access token으로 대체하세요. access token 획득 방법은 README.md를 참조하세요.}
+```
+2. 환경 검사 코드 생성.
+```perl filename="info.pl" copy
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+use lib "lib";
+use Https;
+use Prop;
+use Json;
+
+print "\n", "#"x80, "\n";
+print "[TEST CASE 1]\n";
+my $prop = Prop->new("info.txt", " ");
+my ($access_token) = $prop->gets("access_token");
+printf "환경파일 읽기에 성공했습니다.\naccess token은 %s입니다.\n", $access_token;
+
+print "\n", "#"x80, "\n";
+
+print "[TEST CASE 2]\n";
+my $https = Https->new;
+$https->host("naver.com")
+    ->url("/")
+    ;
+my $result = $https->get();
+printf "naver.com에 요청을 보냅니다.\n%s", $result;
+print "\n", "#"x80, "\n";
+```
+3. 환경 검사 코드 수행.
+
+```shell copy
+perl info.pl
+```

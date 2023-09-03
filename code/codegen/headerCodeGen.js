@@ -1,9 +1,10 @@
 /** 
- * @param {} options.header
- * @param {} options.fileName
+ * @param {} options.headerTitle
+ * @param {} options.description
  */
 export function headerCodeGen(options) {
-    return `# ${options.header}
+    return `# ${options.headerTitle}
+    ${options.description}
     `
 }
 

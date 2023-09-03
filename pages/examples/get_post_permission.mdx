@@ -1,80 +1,21 @@
-import { Cards, Card } from "nextra/components";
+import { RemoteContent } from "nextra/data";
+import { buildDynamicMDX, buildDynamicMeta } from 'nextra/remote'
+import { Tabs, Cards, Card} from 'nextra/components'
+import { fullCodePartCodeGen } from '../../code';
 
-# 사용자 정보 조회
-
-로그인 사용자의 프로필 정보를 가져옵니다.
-
-import { Tabs } from "nextra/components";
-
-<Tabs items={["Javascript", "perl"]}>
-
-<Tabs.Tab>
-```js filename="example.js" copy
-const ACCESS_TOKEN = '발급받은 ACCESS_TOKEN 입력';
-const HOST = "https://openapi.band.us";
-const API = "/v2/band/permissions";
-
-// parameters
-const BAND_KEY = "검색할_밴드_키";
-const PERMISSIONS = ["posting","commenting","contents_deletion"].join(',');
-
-const xhr = new XMLHttpRequest();
-
-xhr.onload = function () {
-  if (xhr.status != 200) {
-    // Error!
-    return;
+export const getStaticProps = async ({ params }) => {
+   return { 
+    props: {
+        ...(await buildDynamicMeta()),
+        ...(await buildDynamicMDX(
+          await fullCodePartCodeGen({
+            fileName: 'get_post_permission', 
+            headerTitle: '사용자 정보 조회',
+            description: ''
+          })
+         , {defaultShowCopyCode: true, codeHighlight: true}))
+    }
   }
-  var responseObj = xhr.response;
-  console.log(responseObj); // response!
-}
-xhr.open("GET", `${HOST}${API}?access_token=${ACCESS_TOKEN}&band_key=${BAND_KEY}&permissions=${PERMISSIONS}`);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.responseType = "json";
-xhr.send();
-```
-</Tabs.Tab>
+};
 
-<Tabs.Tab>
-```perl filename="example.pl"
-#!/usr/bin/perl
-use strict;
-use warnings;
-
-use lib "lib";
-use Https;
-use Prop;
-use Json;
-
-print "\n", "#"x80, "\n";
-
-print "[TEST CASE 1]\n";
-my $prop = Prop->new("info.txt", " ");
-my ($access_token) = $prop->gets("access_token");
-printf "환경파일 읽기에 성공했습니다.\naccess token은 %s입니다.\n", $access_token;
-
-print "\n", "#"x80, "\n";
-
-print "[TEST CASE 2]\n";
-my $https = Https->new;
-$https->host("naver.com")
-->url("/")
-;
-my $result = $https->get();
-printf "naver.com에 요청을 보냅니다.\n%s", $result;
-print "\n", "#"x80, "\n";
-
-```
-</Tabs.Tab>
-</Tabs>
-
-#### 더 알아보기
-
-<Cards>
-  <Card
-    icon={<span>📖</span>}
-    target={'_blank'}
-    title="Band Open API 문서"
-    href="https://developers.band.us/develop/guide/api/get_post_permission"
-  />
-</Cards>
+<RemoteContent components={{Tabs, TabItem: Tabs.Tab, Cards, Card }}/>

@@ -10,7 +10,7 @@ export function tabItemCodeGen(options) {
     '\`\`\`' +
     options.syntaxKey + ' ' +
     'filename="example.' + options.fileExtension + "\""+ '\n' +
-    options.content + "\`\`\`" + "\n" +
+    options.content + "\n" + "\`\`\`" + "\n" +
     '</TabItem> \n'
 }
 
