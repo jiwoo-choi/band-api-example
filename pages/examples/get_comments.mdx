@@ -2,6 +2,7 @@ import { RemoteContent } from "nextra/data";
 import { buildDynamicMDX, buildDynamicMeta } from 'nextra/remote'
 import { Tabs, Cards, Card} from 'nextra/components'
 import { fullCodePartCodeGen } from '../../code';
+import { GithubIcons } from "../../code/icons";
 
 export const getStaticProps = async ({ params }) => {
    return { 
@@ -18,4 +19,4 @@ export const getStaticProps = async ({ params }) => {
   }
 };
 
-<RemoteContent components={{Tabs, TabItem: Tabs.Tab, Cards, Card }}/>
+<RemoteContent components={{Tabs, TabItem: Tabs.Tab, Cards, Card, GithubIcons }}/>
